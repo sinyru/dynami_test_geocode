@@ -1,24 +1,13 @@
 <% project_name = 'rails-api-template' %>
 
- production:
-   adapter: postgresql
-   encoding: utf8
-   database: GPC2015
-   username: zhu
-   password: 01018064
-   host: 10.12.0.2
-   port: 5433
-   pool: 10
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 5 } %>
 
- development:
-   adapter: postgresql
-   encoding: utf8
-   database: GPC2015
-   username: zhu
-   password: 01018064
-   host: 10.12.0.2
-   port: 5433
-   pool: 10
+development:
+  <<: *default
+  database: <%= project_name %>_development
 
 test:
   <<: *default
